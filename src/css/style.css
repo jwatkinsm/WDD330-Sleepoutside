@@ -109,6 +109,18 @@ button {
 .cart:hover svg {
   fill: gray;
 }
+.cart {
+  animation: addToCart 0.25s;
+}
+@keyframes addToCart {
+  0% {
+  }
+  50% {
+      transform: scale(1.1) rotate(5deg) translateY(5px);
+  }
+  100% {
+  }
+}
 
 /* End cart icon styles */
 
