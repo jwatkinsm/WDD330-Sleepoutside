@@ -6,8 +6,8 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems;
 }
 
-function cartItemTemplate(items) {
-  return items.map(item => {
+function cartItemTemplate(cartItems) {
+  return cartItems.map(item => {
     return `<li class="cart-card divider">
       <a href="#" class="cart-card__image">
         <img
