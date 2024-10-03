@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import{findProductById} from "./productData.mjs";
 import{setLocalStorage} from "./utils.mjs";
 
@@ -17,4 +18,15 @@ function addProductToCart(product) {
     .getElementById("addToCart")
     .addEventListener("click", addToCartHandler);
     
+=======
+import { findProductById } from "./productData.mjs";
+import { setLocalStorage } from "./utils.mjs";
+
+let product = {};
+
+export default async function productDetails(productId) {
+    
+}
+
+>>>>>>> 110e02dfd9bd29e250fa0cb198ee53172d0e40d6
 
