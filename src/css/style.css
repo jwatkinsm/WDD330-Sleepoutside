@@ -116,7 +116,7 @@ button {
   0% {
   }
   50% {
-      transform: scale(1.1) rotate(5deg) translateY(5px);
+    transform: scale(1.1) rotate(5deg) translateY(5px);
   }
   100% {
   }
