@@ -28,3 +28,8 @@ export function getParam(param) {
   const urlParams = new URLSearchParams(queryString);
   return urlParams.get(param);
 }
+// Cart Icon Animation
+export function startCartAnimation() {
+  const cart = document.querySelector('.cart');
+  cart.classList.add('animate');
+}

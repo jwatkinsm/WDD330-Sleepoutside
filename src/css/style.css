@@ -109,7 +109,7 @@ button {
 .cart:hover svg {
   fill: gray;
 }
-.cart {
+.animate {
   animation: addToCart 0.25s;
 }
 @keyframes addToCart {
