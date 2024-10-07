@@ -33,3 +33,7 @@ export function startCartAnimation() {
   const cart = document.querySelector('.cart');
   cart.classList.add('animate');
 }
+export function stopCartAnimation() {
+  const cart = document.querySelector('.cart');
+  cart.classList.remove('animate');
+}

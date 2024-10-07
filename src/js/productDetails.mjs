@@ -1,5 +1,5 @@
 import{findProductById} from "./productData.mjs";
-import{setLocalStorage, getLocalStorage, startCartAnimation} from "./utils.mjs";
+import{setLocalStorage, getLocalStorage, startCartAnimation, stopCartAnimation} from "./utils.mjs";
 
 let product = {};
 
@@ -14,6 +14,7 @@ function addProductToCart() {
     cart.push(product);
     setLocalStorage("so-cart", cart);
     startCartAnimation()
+    setTimeout(() => {stopCartAnimation()}, 500);
   }
   
 function renderProductDetails(){
