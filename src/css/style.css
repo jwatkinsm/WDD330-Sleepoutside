@@ -148,6 +148,14 @@ button:active{
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+.cart-footer-hide {
+  display: none;
+}
+
+.cart-footer-show {
+  display: block;}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
