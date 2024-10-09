@@ -153,6 +153,9 @@ button:active{
   display: none;
 }
 
+.cart-footer-show {
+  display: block;}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
