@@ -76,6 +76,9 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
+#alert-section p{
+  padding: 5px;
+}
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
