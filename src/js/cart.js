@@ -55,6 +55,10 @@ function attachRemoveListeners() {
 function removeItemFromCart(itemId) {
   let cartItems = getLocalStorage("so-cart");
 
+  // debugging scripts
+  console.log("Current Cart Items:", cartItems);
+  console.log("Removing Items With ID:", itemID);
+
   cartItems = cartItems.filter(item => item.Id !== Number(itemId));
 
   setLocalStorage("so-cart", cartItems);
