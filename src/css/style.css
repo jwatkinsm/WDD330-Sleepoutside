@@ -217,7 +217,17 @@ button:active{
 .product-detail img {
   width: 100%;
 }
-
+.product_discount{
+  margin-bottom: 0.2%;
+  color: red;
+  font-weight:bold;
+}
+.product_discounted{
+  margin-top: 0.1%;
+  font-style: italic;
+  text-decoration: line-through;
+  color:rgb(168, 167, 167);
+}
 /* Start cart list card styles */
 .cart-card {
   display: grid;
