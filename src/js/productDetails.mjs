@@ -19,12 +19,23 @@ function addProductToCart() {
   }
   
 function renderProductDetails(){
+
+  let discountMessage = "";
+  let originalPrice = "";
+  if (product.SuggestedRetailPrice > product.FinalPrice) {
+    const discountAmount = (product.SuggestedRetailPrice - product.FinalPrice).toFixed(2);
+    discountMessage = document.querySelector("#productDiscountPrice").innerText = 'SAVE '+ discountAmount;
+    originalPrice = document.querySelector("#productOrginalPrice").innerText = product.SuggestedRetailPrice;
+  }
+
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Image;
   document.querySelector("#productImage").alt = product.Name;
   document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
+  discountMessage;
+ 
   document.querySelector("#productColorName").innerText =
     product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
