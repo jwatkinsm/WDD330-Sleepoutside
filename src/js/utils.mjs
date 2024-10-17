@@ -48,6 +48,15 @@ function loadTemplate(path) {
     }
   };
 }
+
+export async function loadHeaderFooter() {
+  const headerFunction = loadTemplate("/partials/header.html");
+  const footerFunction = loadTemplate("/partials/footer.html");
+  const header = document.querySelector("#main-header");
+  const footer = document.querySelector("#main-footer");
+  renderWithTemplate(headerFunction, header);
+  renderWithTemplate(footerFunction, footer);
+}
 // Cart Icon Animation
 export function startCartAnimation() {
   const cart = document.querySelector('.cart');
