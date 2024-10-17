@@ -1,6 +1,6 @@
-import { getLocalStorage,loadHeaderFooter,renderCartCount } from "./utils.mjs";
-
-function renderCartContents() {
+import { loadHeaderFooter } from "./utils.mjs";
+import ShoppingCart from "./shoppingCart.mjs";
+/*function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (!cartItems) {
     return;
@@ -34,6 +34,6 @@ function getCartTotal(cartItems) {
   const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
   document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
   document.querySelector(".cart-total").textContent = `Total: $${cartTotal}`;
-}
+}*/
 loadHeaderFooter();
-renderCartContents();
+ShoppingCart();
