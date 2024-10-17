@@ -29,6 +29,21 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 // render product list
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = "afterbegin",
+  clear = true
+) {
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  const htmlString = list.map(templateFn);
+  parentElement.insertAdjacentHTML(position, htmlString.join(""));
+}
+
+// render with template
 export async function renderWithTemplate(templateFn, parentElement, data, callback, position="afterbegin", clear=true) {
   if (clear) {
     parentElement.innerHTML = "";
