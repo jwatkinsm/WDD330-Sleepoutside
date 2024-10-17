@@ -1,4 +1,4 @@
-import { getLocalStorage,renderCartCount } from "./utils.mjs";
+import { getLocalStorage,loadHeaderFooter,renderCartCount } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -35,5 +35,5 @@ function getCartTotal(cartItems) {
   document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
   document.querySelector(".cart-total").textContent = `Total: $${cartTotal}`;
 }
-
+loadHeaderFooter();
 renderCartContents();
