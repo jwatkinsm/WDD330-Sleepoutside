@@ -29,13 +29,24 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 // render product list
-export function renderWithTemplate(templateFn, parentElement, data, callback, position="afterbegin", clear=true) {
+export async function renderWithTemplate(templateFn, parentElement, data, callback, position="afterbegin", clear=true) {
   if (clear) {
     parentElement.innerHTML = "";
   }
-  parentElement.insertAdjacentHTML(position, template);
+  const htmlString= await templateFn(data);
+  parentElement.insertAdjacentHTML(position, htmlString);
   if(callback) {
       callback(data);
+}}
+
+function loadTemplate(path) {
+  return async function () {
+    const res = await fetch(path);
+    if (res.ok) {
+      const html = await res.text();
+      return html;
+    }
+  };
 }
 // Cart Icon Animation
 export function startCartAnimation() {
