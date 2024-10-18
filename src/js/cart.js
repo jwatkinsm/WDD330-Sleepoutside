@@ -1,5 +1,6 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter} from "./utils.mjs";
 import ShoppingCart from "./shoppingCart.mjs";
+import { getCartTotal } from "./shoppingCart.mjs";
 /*function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (!cartItems) {
@@ -37,3 +38,5 @@ function getCartTotal(cartItems) {
 }*/
 loadHeaderFooter();
 ShoppingCart();
+
+getCartTotal();

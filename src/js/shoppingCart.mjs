@@ -1,11 +1,12 @@
-import { getLocalStorage, renderCartCount, renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 export default function ShoppingCart(){
     const cartItems = getLocalStorage("so-cart");
     const outputEl = document.querySelector(".product-list");
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
-    renderCartCount();
-    getCartTotal();
+    if(!cartItems){
+      return;
+    }
 }
 /*function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -37,8 +38,13 @@ function cartItemTemplate(item) {
 
       return newItem;
   }
- function getCartTotal(cartItems) {
+/* function getCartTotal(cartItems) {
     const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
     document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
     document.querySelector(".cart-total").textContent = `Total: $${cartTotal}`;
-  }
+  }*/
+   export function getCartTotal(cartItems) {
+      const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
+      document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
+      document.querySelector(".cart-total").textContent = `Total: $${cartTotal}`;
+    }
