@@ -47,5 +47,5 @@ function cartItemTemplate(item) {
     function getCartTotal(cartItems) {
       const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
       document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
-      document.querySelector(".cart-total").textContent = `Total: $${cartTotal}`;
+      document.querySelector(".cart-total").textContent = `Total: $${cartTotal.toFixed(2)}.`;
     }
