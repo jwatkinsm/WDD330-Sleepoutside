@@ -71,6 +71,8 @@ export async function loadHeaderFooter() {
   const footer = document.querySelector("#footer");
   renderWithTemplate(headerFunction, header);
   renderWithTemplate(footerFunction, footer);
+  renderCartCount();
+  renderCartCount()
 }
 // Cart Icon Animation
 export function startCartAnimation() {
