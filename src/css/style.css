@@ -264,6 +264,34 @@ button:active{
   grid-column: 3;
 }
 
+/* product grid styls */
+.product-grid {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: var(--dark-grey);
+}
+
+.product-grid h2 {
+  margin: 0;
+}
+
+.product-grid a {
+  text-decoration: none;
+  color: var(--dark-grey);
+}
+
+.product-grid img {
+  width: 60%;
+}
+
+.product-grid a:link,
+.product-grid a:visited {
+  color: var(--dark-grey);
+}
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

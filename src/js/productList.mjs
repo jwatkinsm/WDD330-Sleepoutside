@@ -11,9 +11,9 @@ function productCardTemplate(product) {
   }
 
     return `<li class="product-card">
-      <a href="product_pages/index.html?product=${product.Id}">
+      <a href="/product_pages/index.html?product=${product.Id}">
       <img
-        src="${product.Image}"
+        src="${product.Images.PrimaryMedium}"
         alt="Image of ${product.Name}"
       />
       <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -26,8 +26,7 @@ function productCardTemplate(product) {
 export default async function productList(selector, category){
     const element= document.querySelector(selector);
     const products= await getData(category);
-    
-    console.log(products);
-    
+    const categoryTitle = document.getElementById("category-title");
+    categoryTitle.innerText = category.charAt(0).toUpperCase() + category.slice(1);
     renderListWithTemplate(productCardTemplate, element, products);
 }
