@@ -26,8 +26,7 @@ function productCardTemplate(product) {
 export default async function productList(selector, category){
     const element= document.querySelector(selector);
     const products= await getData(category);
-    
-    console.log(products);
-    
+    const categoryTitle = document.getElementById("category-title");
+    categoryTitle.innerText = category.charAt(0).toUpperCase() + category.slice(1);
     renderListWithTemplate(productCardTemplate, element, products);
 }
