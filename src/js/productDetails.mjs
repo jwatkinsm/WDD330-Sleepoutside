@@ -11,7 +11,16 @@ export default async function productDetails(productId) {
 
 function addProductToCart() {
     const cart = getLocalStorage("so-cart") || [];
-    cart.push(product);
+    const existingItem = cart.find((item) => item.Id === product.Id);
+
+    if (existingItem) {
+      existingItem.FinalPrice += product.FinalPrice;
+      existingItem.Quantity += 1;
+    } else {
+      product.Quantity = 1;
+      cart.push(product);
+    }
+    
     setLocalStorage("so-cart", cart);
     renderCartCount();
     startCartAnimation();
