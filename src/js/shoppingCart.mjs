@@ -32,11 +32,13 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: ${item.Quantity}</p>
+    <div class="cart-card__quantity">
+      <button class="quantity-btn-increase" data-id="${item.Id}">+</button>
+      <span>qty: ${item.Quantity}</span>
+      <button class="quantity-btn-decrease" data-id="${item.Id}">-</button>
+    </div>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
-  
-
       return newItem;
   }
 /* function getCartTotal(cartItems) {
@@ -47,5 +49,5 @@ function cartItemTemplate(item) {
     function getCartTotal(cartItems) {
       const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
       document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
-      document.querySelector(".cart-total").textContent = `Total: $${cartTotal.toFixed(2)}.`;
+      document.querySelector(".cart-total").textContent = `Total: $${cartTotal.toFixed(2)}`;
     }
