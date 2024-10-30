@@ -1,26 +1,28 @@
-import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, renderListWithTemplate, setLocalStorage } from "./utils.mjs";
 
-export default function ShoppingCart(){
+export default function ShoppingCart() {
     const cartItems = getLocalStorage("so-cart");
+    if (!cartItems) {
+        return;
+    }
     const outputEl = document.querySelector(".product-list");
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
     getCartTotal(cartItems);
-    if(!cartItems){
-      return;
-    }
+
+    outputEl.addEventListener("click", function(event) {
+        if (event.target.classList.contains("quantity-btn-increase")) {
+            addQuantity(event.target.dataset.id, outputEl, cartItems);
+        }
+    });
+
+    outputEl.addEventListener("click", function(event) {
+      if (event.target.classList.contains("quantity-btn-decrease")) {
+          subtractQuantity(event.target.dataset.id, outputEl, cartItems);
+      }
+  });
 }
-/*function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  if (!cartItems) {
-    return;
-  }
-  const htmlItems = cartItemTemplate(cartItems);
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  getCartTotal(cartItems);
-  renderCartCount();
-}*/
+
 function cartItemTemplate(item) {
-    
     const newItem = `<li class="cart-card divider">
     <a href="#" class="cart-card__image">
       <img
@@ -39,15 +41,36 @@ function cartItemTemplate(item) {
     </div>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
-      return newItem;
-  }
-/* function getCartTotal(cartItems) {
+    return newItem;
+}
+
+function getCartTotal(cartItems) {
     const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
     document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
-    document.querySelector(".cart-total").textContent = `Total: $${cartTotal}`;
-  }*/
-    function getCartTotal(cartItems) {
-      const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
-      document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
-      document.querySelector(".cart-total").textContent = `Total: $${cartTotal.toFixed(2)}`;
-    }
+    document.querySelector(".cart-total").textContent = `Total: $${cartTotal.toFixed(2)}`;
+}
+
+function addQuantity(productId, outputEl, cartItems) {
+    const item = cartItems.find((item) => item.Id == productId);
+    item.Quantity++;
+    item.FinalPrice += item.ListPrice;
+
+    setLocalStorage("so-cart", cartItems);
+    renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
+    getCartTotal(cartItems);
+}
+
+function subtractQuantity(productId, outputEl, cartItems) {
+  const item = cartItems.find((item) => item.Id == productId);
+  if (item.Quantity == 1) {
+    const index = cartItems.indexOf(item);
+    cartItems.splice(index,1);
+  } else {
+    item.Quantity --;
+    item.FinalPrice = item.FinalPrice - item.ListPrice;
+  }
+
+  setLocalStorage("so-cart", cartItems);
+  renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
+  getCartTotal(cartItems);
+}
