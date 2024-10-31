@@ -291,6 +291,25 @@ button:active{
   color: var(--dark-grey);
 }
 
+/* Quantity buttons styling */
+.quantity-btn-increase {
+  padding: 0.2em 0.5em;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: auto;
+  margin-bottom: 7px;
+  display: block;
+  cursor: pointer;
+}
+
+.quantity-btn-decrease {
+  padding: 0.2em 0.5em;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: 7px auto;
+  display: block;
+  cursor: pointer;
+}
 
 @media screen and (min-width: 500px) {
   body {
