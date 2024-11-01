@@ -9,6 +9,11 @@ export default function ShoppingCart() {
     renderListWithTemplate(cartItemTemplate, outputEl, cartItems);
     getCartTotal(cartItems);
 
+    if (!cartItems || cartItems.length === 0) {
+      document.querySelector(".product-list").innerHTML = "<p>Your cart is empty!</p>";
+      return;
+    }
+
     outputEl.addEventListener("click", function(event) {
         if (event.target.classList.contains("quantity-btn-increase")) {
           addQuantity(event.target.dataset.id, outputEl, cartItems);
@@ -53,8 +58,10 @@ function cartItemTemplate(item) {
 
 function getCartTotal(cartItems) {
     const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
+    if(cartTotal > 0){
     document.querySelector(".cart-footer-hide").classList.add("cart-footer-show");
     document.querySelector(".cart-total").textContent = `Total: $${cartTotal.toFixed(2)}`;
+    }
 }
 
 function addQuantity(productId, outputEl, cartItems) {
