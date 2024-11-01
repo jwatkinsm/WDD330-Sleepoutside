@@ -311,6 +311,13 @@ button:active{
   cursor: pointer;
 }
 
+.remove-cart-item {
+  padding: 0.2em 0.5em;
+  grid-column: 3/4;
+  grid-row: 3/4;
+  margin: 0;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
