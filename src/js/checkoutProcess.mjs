@@ -37,7 +37,14 @@ const checkoutProcess = {
     },
 
     calculateOrdertotal: function(){
-
+        this.shipping = 10 + (this.list.length - 1) * 2;
+        this.tax = (this.itemTotal * 0.06).toFixed(2);
+        this.orderTotal = (
+          parseFloat(this.itemTotal) +
+          parseFloat(this.shipping) +
+          parseFloat(this.tax)
+        ).toFixed(2);
+        this.displayOrderTotals();
     },
     displayOrderTotals: function(){
         const orderTotal = document.querySelector(this.outputSelector + " #orderTotal");
@@ -46,6 +53,22 @@ const checkoutProcess = {
         orderTotal.innerText = "$" + this.orderTotal;
         shipping.innerText = "$" + this.shipping;
         tax.innerText = "$" + this.tax;
-    }
-}
+    },
+    checkout: async function (form) {
+        const json = formDataToJSON(form);
+        // add totals, and item details
+        json.orderDate = new Date();
+        json.orderTotal = this.orderTotal;
+        json.tax = this.tax;
+        json.shipping = this.shipping;
+        json.items = packageItems(this.list);
+        console.log(json);
+        try {
+          const res = await checkout(json);
+          console.log(res);
+        } catch (err) {
+          console.log(err);
+        }
+      },
+};
 export default checkoutProcess;
