@@ -2,7 +2,7 @@ import{loadHeaderFooter} from "./utils.mjs"
  
 loadHeaderFooter();
 
-heckoutProcess.init("so-cart", ".checkout-summary");
+checkoutProcess.init("so-cart", ".checkout-summary");
 
 document
   .querySelector("#zip")
