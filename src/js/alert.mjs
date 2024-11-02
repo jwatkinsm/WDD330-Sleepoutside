@@ -1,8 +1,8 @@
-import { getData } from "./productData.mjs";
+import { getProductsByCategory } from "./externalServices.mjs";
 
 export async function getAlerts() {
     try {
-        const alerts = await getData("alerts");
+        const alerts = await getProductsByCategory("alerts");
         return alerts;
     } catch (error) {
         console.error("Error fetching alerts:", error);
