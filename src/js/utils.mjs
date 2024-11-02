@@ -88,7 +88,7 @@ export function renderCartCount(){
   const cartCounter = document.getElementById('cart-count');
   const cartCount = getCartCount();
   //check if cart has items to toggle visibility
-  if (cartCount>0){
+  if (cartCount > 0){
     showElement(cartCounter);
   }
   else{
