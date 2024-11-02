@@ -1,6 +1,16 @@
 import { getLocalStorage } from "./utils.mjs";
 import{checkout} from "./externalServices.mjs"
 
+function formDataToJSON(formElement) {
+    const data = new FormData(formElement),
+      convertedJSON = {};
+    
+    data.forEach(function (value, key) {
+        convertedJSON[key] = value;
+    });
+
+    return convertedJSON
+}
 
 function packageItems(items) {
     const simpleItems = items.map((item) => {
