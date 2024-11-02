@@ -1,4 +1,6 @@
 import { getLocalStorage } from "./utils.mjs";
+import{checkout} from "./externalServices.mjs"
+
 
 function packageItems(items) {
     const simpleItems = items.map((item) => {
