@@ -76,7 +76,7 @@ header {
 .logo--square > div {
   margin-top: -1.7em;
 }
-#alert-section p{
+#alert-section p {
   padding: 5px;
 }
 /* utility classes */
@@ -94,8 +94,8 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
-button:active{
-  transform: scale(0.90);
+button:active {
+  transform: scale(0.9);
 }
 .divider {
   border-bottom: 2px solid var(--primary-color);
@@ -183,7 +183,8 @@ button:active{
 }
 
 .cart-footer-show {
-  display: block;}
+  display: block;
+}
 
 /* Styles for product lists */
 .product-card {
@@ -217,16 +218,16 @@ button:active{
 .product-detail img {
   width: 100%;
 }
-.product_discount{
+.product_discount {
   margin-bottom: 0.2%;
   color: red;
-  font-weight:bold;
+  font-weight: bold;
 }
-.product_discounted{
+.product_discounted {
   margin-top: 0.1%;
   font-style: italic;
   text-decoration: line-through;
-  color:rgb(168, 167, 167);
+  color: rgb(168, 167, 167);
 }
 /* Start cart list card styles */
 .cart-card {

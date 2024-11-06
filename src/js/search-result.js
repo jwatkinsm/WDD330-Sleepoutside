@@ -1,7 +1,9 @@
-import { loadHeaderFooter, renderListWithTemplate, getParam } from "./utils.mjs";
+import {
+  loadHeaderFooter,
+  renderListWithTemplate,
+  getParam,
+} from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
-
-
 
 loadHeaderFooter();
 
@@ -28,18 +30,18 @@ async function getSearchResults() {
         (product) =>
           // match the brand
           product.Brand.Name.toLowerCase().includes(
-            searchResults.toLowerCase(),
+            searchResults.toLowerCase()
           ) ||
           // match the category
           product.Category.toLowerCase().includes(
-            searchResults.toLowerCase(),
+            searchResults.toLowerCase()
           ) ||
           // match the product name
           product.Name.toLowerCase().includes(searchResults.toLowerCase()) ||
           // match the color
           product.Colors?.some((color) =>
-            color.ColorName.toLowerCase().includes(searchResults.toLowerCase()),
-          ),
+            color.ColorName.toLowerCase().includes(searchResults.toLowerCase())
+          )
       );
 
       if (matchedResults.length > 0) {
