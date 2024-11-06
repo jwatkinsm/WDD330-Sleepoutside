@@ -291,6 +291,57 @@ button:active{
   color: var(--dark-grey);
 }
 
+/* Quantity buttons styling */
+.quantity-btn-increase {
+  padding: 0.2em 0.5em;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: auto;
+  margin-bottom: 7px;
+  display: block;
+  cursor: pointer;
+}
+
+.quantity-btn-decrease {
+  padding: 0.2em 0.5em;
+  background-color: var(--secondary-color);
+  color: white;
+  margin: 7px auto;
+  display: block;
+  cursor: pointer;
+}
+/* checkout styles */
+.checkout-form {
+  padding: 0.5em;
+}
+.checkout-form label {
+  display: block;
+}
+.checkout-form input {
+  width: 100%;
+  font-size: 1.2em;
+}
+
+.checkout-summary > ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+.checkout-summary li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkout-summary input {
+  width: 25%;
+  font-size: 1em;
+}
+
+.remove-cart-item {
+  padding: 0.2em 0.5em;
+  grid-column: 3/4;
+  grid-row: 3/4;
+  margin: 0;
+}
 
 @media screen and (min-width: 500px) {
   body {
