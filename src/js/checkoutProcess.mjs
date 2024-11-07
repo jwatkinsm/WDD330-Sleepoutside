@@ -76,11 +76,19 @@ const checkoutProcess = {
         json.items = packageItems(this.list);
         console.log(json);
         try {
-          const res = await checkout(json);
-          console.log(res);
-        } catch (err) {
-          console.log(err);
-        }
+            const res = await checkout(json);
+            console.log(res);
+            setLocalStorage("so-cart", []);
+            location.assign("/checkout/success.html");
+          } catch (err) {
+            // get rid of any preexisting alerts.
+            removeAllAlerts();
+            for (let message in err.message) {
+              alertMessage(err.message[message]);
+            }
+      
+            console.log(err);
+          }
       },
 };
 export default checkoutProcess;
