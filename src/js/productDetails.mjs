@@ -16,6 +16,7 @@ function addProductToCart() {
     if (existingItem) {
       existingItem.FinalPrice += product.FinalPrice;
       existingItem.Quantity += 1;
+      alertMessage("Product added to cart", true);
     } else {
       product.Quantity = 1;
       cart.push(product);
