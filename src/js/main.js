@@ -1,5 +1,5 @@
 import { renderAlerts } from "./alert.mjs";
-import { renderCartCount } from "./utils.mjs";
+import { renderCartCount, firstTimeVisitor } from "./utils.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
 function handleSearch(event) {
@@ -19,4 +19,5 @@ if (searchForm) {
 
 loadHeaderFooter();
 renderAlerts();
-renderCartCount();
+//renderCartCount();
+firstTimeVisitor();
