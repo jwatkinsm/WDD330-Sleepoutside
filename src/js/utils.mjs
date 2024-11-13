@@ -168,3 +168,63 @@ export function updateBreadcrumb(products = null) {
     breadcrumb.appendChild(productLink);
   }
 }
+
+export function firstTimeVisitor() {
+  if (!localStorage.getItem('visited')) {
+    // Create modal elements
+    const modal = document.createElement('div');
+    modal.id = 'registerModal';
+    modal.className = 'modal';
+
+    const modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+
+    const closeSpan = document.createElement('span');
+    closeSpan.className = 'close';
+    closeSpan.innerHTML = '&times;';
+
+    const heading = document.createElement('h2');
+    heading.textContent = 'Welcome!';
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = 'Register now and enter our giveaway!';
+
+    const registerButton = document.createElement('button');
+    registerButton.id = 'registerButton';
+    registerButton.textContent = 'Register Now';
+
+    // Append elements to modal content
+    modalContent.appendChild(closeSpan);
+    modalContent.appendChild(heading);
+    modalContent.appendChild(paragraph);
+    modalContent.appendChild(registerButton);
+
+    // Append modal content to modal
+    modal.appendChild(modalContent);
+
+    // Prepend modal to main element
+    const main = document.querySelector('main');
+    if (main) {
+      main.prepend(modal);
+    } else {
+      document.body.prepend(modal);
+    }
+
+    // Display the modal
+    modal.style.display = 'block';
+
+    // Set localStorage to indicate the user has visited
+    localStorage.setItem('visited', 'true');
+
+    // Close modal on click of close button or outside the modal
+    closeSpan.onclick = function() {
+      modal.style.display = 'none';
+    };
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    };
+  }
+}
