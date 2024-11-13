@@ -1,11 +1,12 @@
 import{findProductById} from "./externalServices.mjs";
-import{setLocalStorage, getLocalStorage, startCartAnimation, stopCartAnimation, renderCartCount} from "./utils.mjs";
+import{setLocalStorage, getLocalStorage, startCartAnimation, stopCartAnimation, renderCartCount, updateBreadcrumb} from "./utils.mjs";
 
 let product = {};
 
 export default async function productDetails(productId) {
   product = await findProductById(productId);
   renderProductDetails(product);
+  updateBreadcrumb(product);
   document.getElementById("addToCart").addEventListener("click", addProductToCart);
 }
 

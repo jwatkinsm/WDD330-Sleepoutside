@@ -1,3 +1,5 @@
+import { doc } from "prettier";
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -139,4 +141,30 @@ export function alertMessage(message, scroll = true, duration = 3000) {
 export function removeAllAlerts() {
   const alerts = document.querySelectorAll(".alert");
   alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+
+export function updateBreadcrumb(products = null) {
+  const breadcrumb = document.querySelector(".breadcrumb-links");
+  const category = getParam("category");
+  if (category) {
+    const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+    const prev = document.createElement("li");
+    prev.innerHTML = `<a href="/product-list/index.html?category=${category}">${capitalizedCategory} ></a>`;
+    breadcrumb.appendChild(prev);
+    const current = document.createElement("li");
+    current.innerHTML = `<a href="#"> (${products.length}) items</a>`;
+    breadcrumb.appendChild(current);
+  }
+
+  const product = getParam("product");
+  if (product) {
+    const prev = document.createElement("li");
+    const capitalizedCategory = products.Category.charAt(0).toUpperCase() + products.Category.slice(1);
+    prev.innerHTML = `<a href="/product-list/index.html?category=${products.Category}">${capitalizedCategory} ></a>`;
+    breadcrumb.appendChild(prev);
+    
+    const productLink = document.createElement("li");
+    productLink.innerHTML = `<a href="#">${products.NameWithoutBrand}</a>`;
+    breadcrumb.appendChild(productLink);
+  }
 }

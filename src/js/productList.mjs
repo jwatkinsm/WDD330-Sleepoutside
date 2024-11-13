@@ -1,5 +1,5 @@
 import { getProductsByCategory } from "./externalServices.mjs";
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, updateBreadcrumb } from "./utils.mjs";
 
 function productCardTemplate(product) {
 
@@ -29,4 +29,5 @@ export default async function productList(selector, category){
     const categoryTitle = document.getElementById("category-title");
     categoryTitle.innerText = category.charAt(0).toUpperCase() + category.slice(1);
     renderListWithTemplate(productCardTemplate, element, products);
+    updateBreadcrumb(products);
 }
