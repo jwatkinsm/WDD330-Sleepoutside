@@ -1,5 +1,7 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage } from "./utils.mjs";
 import{checkout} from "./externalServices.mjs"
+
+
 
 function formDataToJSON(formElement) {
     const data = new FormData(formElement),
