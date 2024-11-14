@@ -1,7 +1,8 @@
 import{findProductById} from "./externalServices.mjs";
-import{setLocalStorage, getLocalStorage, startCartAnimation, stopCartAnimation, renderCartCount, updateBreadcrumb} from "./utils.mjs";
+import{setLocalStorage, getLocalStorage, startCartAnimation, stopCartAnimation, renderCartCount, updateBreadcrumb, alertMessage} from "./utils.mjs";
 
 let product = {};
+let selectedColorIndex = 0;
 
 export default async function productDetails(productId) {
   product = await findProductById(productId);
@@ -14,16 +15,17 @@ function addProductToCart() {
     const cart = getLocalStorage("so-cart") || [];
     const existingItem = cart.find((item) => item.Id === product.Id);
 
-    if (existingItem) {
+    if (existingItem && existingItem.Colors.ColorName === product.Colors[selectedColorIndex].ColorName) {
       existingItem.FinalPrice += product.FinalPrice;
       existingItem.Quantity += 1;
-      alertMessage("Product added to cart", true);
     } else {
       product.Quantity = 1;
+      product.Colors = product.Colors[selectedColorIndex];
       cart.push(product);
     }
     
     setLocalStorage("so-cart", cart);
+    alertMessage("Product added to cart", true);
     renderCartCount();
     startCartAnimation();
     setTimeout(() => {stopCartAnimation()}, 500);
@@ -39,11 +41,31 @@ function renderProductDetails(){
     originalPrice = document.querySelector("#productOrginalPrice").innerText = product.SuggestedRetailPrice;
   }
 
+  const colorSwatchesContainer = document.querySelector("#colorSwatches");
+
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
+
+
+  product.Colors.forEach((color, index) => {
+    const swatch = document.createElement("img");
+    swatch.classList.add("color-swatch");
+    swatch.src = color.ColorChipImageSrc; 
+    swatch.alt = color.ColorName;
+    
+    colorSwatchesContainer.appendChild(swatch);
+
+    swatch.addEventListener("click", () => {
+      selectedColorIndex = index;
+      document.querySelector("#productColorName").innerText = color.ColorName;
+      document.querySelector("#productImage").src = color.ColorPreviewImageSrc; // Assuming each color has an ImageUrl property
+      document.querySelector("#productImage").alt = product.Name + " - " + color.ColorName;
+    });
+  });
+
   document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
   discountMessage;
  
