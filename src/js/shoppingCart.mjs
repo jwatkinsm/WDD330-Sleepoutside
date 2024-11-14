@@ -44,7 +44,7 @@ function cartItemTemplate(item) {
     <a href="#">
       <h2 class="card__name">${item.Name}</h2>
     </a>
-    <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+    <p class="cart-card__color">${item.Colors.ColorName}</p>
     <div class="cart-card__quantity">
       <button class="quantity-btn-increase" data-id="${item.Id}">+</button>
       <span>qty: ${item.Quantity}</span>
